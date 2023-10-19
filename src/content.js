@@ -91,7 +91,14 @@ function adjustTextAreaHeight() {
 function AnswerChatGPT(message) {
     // Fetching the textarea and the sendButton with more specific selector
     textarea = document.querySelector('#prompt-textarea');
-    sendButton = document.querySelector('#prompt-textarea').parentNode.querySelectorAll('button')[3];
+    let btns = document.querySelector('#prompt-textarea').parentNode.querySelectorAll('button');
+    if (btns.length == 4) {
+        sendButton = btns[3];
+    } else if (btns.length == 2) {
+        sendButton = btns[1];
+    } else {
+        sendButton = btns[0];
+    }
     console.log(sendButton)
     if (!textarea || !sendButton) {
         console.error('Unable to find textarea or send button.');
