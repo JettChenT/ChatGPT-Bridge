@@ -91,7 +91,8 @@ function adjustTextAreaHeight() {
 function AnswerChatGPT(message) {
     // Fetching the textarea and the sendButton with more specific selector
     textarea = document.querySelector('#prompt-textarea');
-    sendButton = document.querySelector('#prompt-textarea').closest('div').querySelector('button');
+    sendButton = document.querySelector('#prompt-textarea').parentNode.querySelectorAll('button')[3];
+    console.log(sendButton)
     if (!textarea || !sendButton) {
         console.error('Unable to find textarea or send button.');
         return;
@@ -178,6 +179,7 @@ function connectWebSocket() {
 
             const output = event.data;
             console.log("New message received :", output);
+            console.log("authentication Needed: ", config.authenticationNeeded);
             if(config.authenticationNeeded && !isAuthenticated)
             {
                 tempKey = extractKey(output);
