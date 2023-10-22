@@ -41,11 +41,11 @@ let textarea = document.querySelector('div.relative.flex > textarea');
 let sendButton = null; 
 
 function getMostRecentMessage() {
-    const messageElement = document.querySelector('div.group:nth-last-child(2) div.markdown.prose');
+    const messageElement = document.querySelector('div.final-completion').querySelector('div.prose');
 
     if (!messageElement) return;
 
-    return messageElement.innerText.trim();
+    return messageElement.innerHTML.trim();
 
 }
 
